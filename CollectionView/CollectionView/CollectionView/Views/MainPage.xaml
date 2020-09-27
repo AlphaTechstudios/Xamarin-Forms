@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionView.Views.MainPage"
+             Title="{Binding Title}"
+             x:Name="UsersPage">
+
+    <StackLayout HorizontalOptions="CenterAndExpand"
+                 
+                 VerticalOptions="CenterAndExpand">
+        <CollectionView  ItemsSource="{Binding Users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Edit"
+                                           Command="{Binding Path=BindingContext.EditCommand, Source={x:Reference Name=UsersPage}}" CommandParameter="{Binding .}"
+                                           IconImageSource="edit.png"
+                                           BackgroundColor="#09C" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=UsersPage}}" CommandParameter="{Binding .}"
+                                           IconImageSource="delete.png"
+                                           BackgroundColor="#CC0000" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid HeightRequest="60"
+                          VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                               Margin="10,0"
+                               VerticalTextAlignment="Center"
+                               FontAttributes="Bold"></Label>
+
+                            <Label Text="{Binding UserName}"
+                               Grid.Column="1"
+                               VerticalTextAlignment="Center"></Label>
+
+                            <Label Text="{Binding Email}"
+                               Grid.Column="2"
+                               VerticalTextAlignment="Center"></Label>
+                            <BoxView Grid.Row="1"
+                                 HeightRequest="1"
+                                 Grid.ColumnSpan="3"
+                                 BackgroundColor="Black"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Header>
+                <Grid BackgroundColor="Black"
+                          HeightRequest="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Name"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                    <Label Grid.Column="1"
+                               TextColor="White"
+                               Text="UserName"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                    <Label Grid.Column="2"
+                               TextColor="White"
+                               Text="Email"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                </Grid>
+            </CollectionView.Header>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>

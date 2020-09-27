@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListView", "ListView\ListView\ListView.csproj", "{9A9D660F-1D05-44F7-819C-28DBA9700E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListView.Android", "ListView\ListView.Android\ListView.Android.csproj", "{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A9D660F-1D05-44F7-819C-28DBA9700E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9D660F-1D05-44F7-819C-28DBA9700E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9D660F-1D05-44F7-819C-28DBA9700E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9D660F-1D05-44F7-819C-28DBA9700E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456F0440-37E7-45FF-97E4-9EB4AA1A2CA4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE699D1D-82F0-4045-8219-4207857D8588}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListView.Views.MainPage"
+             Title="Products"
+             x:Name="MasterMage">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <ListView ItemsSource="{Binding ProductsList}"
+                  HasUnevenRows="True"
+                  BackgroundColor="Transparent"
+                  IsGroupingEnabled="True"
+                  SelectionMode="Single"
+                  SeparatorColor="Gray">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="0,3" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                          
+                            <Frame Margin="5"
+                                   Padding="1"
+                                   HasShadow="True"
+                                   WidthRequest="100"
+                                   BackgroundColor="Black"
+                                   HeightRequest="100">
+                                <Image Source="{Binding ImagePath}" 
+                                       Margin="0.2"
+                                       Aspect="Fill"
+                                       HeightRequest="100"
+                                       WidthRequest="100"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="FillAndExpand"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="20,0"
+                                         VerticalOptions="Center"
+                                         Grid.Column="1">
+                                <StackLayout VerticalOptions="Center"
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="1">
+                                    <Label Text="{Binding Name}" 
+                                            FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <Frame Margin="5"
+                                   Padding="1"
+                                   VerticalOptions="Center"
+                                   Grid.Column="2"
+                                   CornerRadius="5"
+                                   WidthRequest="40"
+                                   HeightRequest="30"
+                                   HasShadow="True">
+                                <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                       Margin="0"
+                                       TextColor="#FFFFFF"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       BackgroundColor="#37474F"/>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="#eaeaea">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout HorizontalOptions="Start"
+                                         Margin="10"
+                                         VerticalOptions="Center">
+
+                                <Label Text="{Binding CategoryName}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"
+                                       TextColor="#2E2E2E"/>
+                            </StackLayout>
+                            <Image Grid.Column="1" 
+                                   Source="{Binding Expanded, Converter={StaticResource BoolToImageConverter}}" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding  Source={x:Reference MasterMage}, Path=BindingContext.HeaderClickCommand}"  NumberOfTapsRequired="1"  CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
