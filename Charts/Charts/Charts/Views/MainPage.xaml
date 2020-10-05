@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Charts.Views.MainPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <microcharts:ChartView Margin="10,0,10,10"
+                     Chart="{Binding LineChart}" 
+                     HeightRequest="300" 
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Fill"/>
+
+        <microcharts:ChartView
+                     Grid.Row="1"
+                     Margin="10,0,10,10"
+                     Chart="{Binding BarChart}" 
+                     HeightRequest="300" 
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Fill"/>
+
+        <microcharts:ChartView
+                     Grid.Row="2"
+                     Margin="10,0,10,10"
+                     Chart="{Binding DonutChart}" 
+                     HeightRequest="300" 
+                     VerticalOptions="Start" 
+                     HorizontalOptions="Fill"/>
+    </Grid>
+    </ScrollView>
+</ContentPage>
