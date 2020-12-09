@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Payment.Views.MainPage"
+             Title="{Binding Title}">
+    <Grid  Padding="20"
+                   ColumnSpacing="20"
+                   VerticalOptions="CenterAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Braintree Sample"
+                     FontAttributes="Bold"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     HorizontalOptions="CenterAndExpand"
+                     TextColor="Black"/>
+
+        <Label Text="Card Number"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"/>
+
+        <Entry BackgroundColor="Transparent"
+                        Margin="0,0,0,10"
+                        Text="{Binding CardInfo.CardNumber}"
+                        Keyboard="Numeric"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2">
+            <!--<Entry.Behaviors>
+                <fastEntry:XamarinFastEntryBehaviour Mask="#### #### #### ####" 
+                                                                 MaxLength="19"/>
+            </Entry.Behaviors>-->
+        </Entry>
+
+        <Label Text="Expiry"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Grid.Column="0"/>
+
+        <Entry Placeholder="MM/YY"
+                              
+                               Text="{Binding CreditCard.Expiry}"
+                               BackgroundColor="Transparent"
+                               Grid.Column="0"
+                               Grid.Row="4">
+           
+        </Entry>
+
+        <Label Text="CVV"
+                           Grid.Row="3"
+                            Grid.Column="1"/>
+
+        <Entry Keyboard="Numeric"
+                            BackgroundColor="Transparent"
+                            Grid.Column="1"
+                            Text="{Binding CreditCard.Cvv}"
+                            Grid.Row="4">
+          
+        </Entry>
+
+        <Button Text="Pay"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="Blue"
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            TextColor="White"
+                            HeightRequest="50"
+                            Command="{Binding PayCommand}"/>
+    </Grid>
+
+</ContentPage>

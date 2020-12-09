@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="Shopping.App">
+  <Application.Resources>
+
+    <!-- Application resource dictionary -->
+      
+      <!--Colors-->
+        <Color x:Key="PrimaryColor">#00416E</Color>
+        <Color x:Key="SeparatorGrayColor">#DCDCDC</Color>
+        <Color x:Key="BlackColor">#000</Color>
+        <Color x:Key="WhiteColor">#FFF</Color>
+        <Color x:Key="StylishGrayColor">#4B515D</Color>
+
+        <!--Navigation bar-->
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+
+        <Style x:Key="MenuItemLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="BoxViewSeparatorStyle" TargetType="BoxView">
+            <Setter Property="Margin" Value="0,3"/>
+            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="Color" Value="{StaticResource SeparatorGrayColor}"/>
+        </Style>
+
+        <Style x:Key="ProductTitleLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+        <Style x:Key="ProductPriceLabelStyle" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+        </Style>
+
+        <Style x:Key="ProductDescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource ProductTitleLabelStyle}">
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <!--Button Style-->
+        <Style x:Key="ButtonFrameStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="HasShadow" Value="True"/>
+            <Setter Property="CornerRadius" Value="100" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="250" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+    </Application.Resources>
+</prism:PrismApplication>

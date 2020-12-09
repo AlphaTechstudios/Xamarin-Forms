@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping", "Shopping\Shopping\Shopping.csproj", "{5E938CFD-E891-459C-B471-EEB049B73E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Android", "Shopping\Shopping.Android\Shopping.Android.csproj", "{2C1E8929-257A-41D3-94CB-812D5063E76C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Models", "Shopping.Models\Shopping.Models.csproj", "{E36274AD-9059-48D4-AD93-2B0AAD7BE02B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E938CFD-E891-459C-B471-EEB049B73E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E938CFD-E891-459C-B471-EEB049B73E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E938CFD-E891-459C-B471-EEB049B73E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E938CFD-E891-459C-B471-EEB049B73E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1E8929-257A-41D3-94CB-812D5063E76C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E36274AD-9059-48D4-AD93-2B0AAD7BE02B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36274AD-9059-48D4-AD93-2B0AAD7BE02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36274AD-9059-48D4-AD93-2B0AAD7BE02B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36274AD-9059-48D4-AD93-2B0AAD7BE02B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8715F02-0B1A-4E3B-98A9-66916C285689}
+	EndGlobalSection
+EndGlobal

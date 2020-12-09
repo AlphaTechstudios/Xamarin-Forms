@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Shopping.Views.ProductsPage"
+             Title="{Binding Title}"
+             x:Name="ProductsView">
+    <Grid>
+        <CollectionView ItemsSource="{Binding ProductsList}"
+                        ItemsLayout="VerticalGrid, 2"
+                        
+                        Margin="5">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                    <Grid RowDefinitions="auto,30,50,1"
+                          ColumnDefinitions="*,70"
+                          Margin="0,4,0,0">
+                        <Frame BorderColor="LightGray"
+                               Padding="3"
+                               Grid.ColumnSpan="2">
+                            <Image Source="{Binding Thumbnail}"
+                               Aspect="AspectFill"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                        </Frame>
+                        <Label Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               Style="{StaticResource ProductTitleLabelStyle}"
+                               HorizontalOptions="Start"
+                               Text="{Binding Name}"/>
+                        <!--<Label Grid.Row="2"
+                               Grid.Column="1"
+                               Style="{StaticResource ProductPriceLabelStyle}"
+                               TextColor="{StaticResource BlackColor}"
+                               HorizontalOptions="Start"
+                               Text="{Binding Price, StringFormat='{0:C2}'}"/>-->
+
+                        <Frame Grid.Row="2"
+                               Grid.Column="1"
+                               CornerRadius="5"
+                               HasShadow="True"
+                               Margin="0"
+                               Padding="0"
+                               BackgroundColor="{StaticResource StylishGrayColor}"
+                               WidthRequest="60"
+                               HeightRequest="35"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               BorderColor="Gray">
+                                    <Label  Text="{Binding Price, StringFormat='{0:C2}'}"
+                                            Style="{StaticResource ProductPriceLabelStyle}"/>
+                        </Frame>
+                   
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference ProductsView}, Path=BindingContext.ShowProductDetailsCommand}"
+                                                  NumberOfTapsRequired="1"
+                                                  CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                        <!--<Frame Grid.Row="2"
+                               Grid.Column="1"
+                               CornerRadius="50"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Padding="5"
+                               Margin="0,0,5,5">
+                            <Image Source="add_to_basket.png"/>
+                        </Frame>-->
+                    </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+</ContentPage>

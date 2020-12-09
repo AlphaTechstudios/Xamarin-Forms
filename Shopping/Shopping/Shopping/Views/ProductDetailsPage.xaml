@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Shopping.Views.ProductDetailsPage"
+             Title="{Binding Title}">
+    <Grid RowDefinitions="3.8*,30,50,auto,*"
+          Margin="5"
+          ColumnDefinitions="*,*">
+        <CarouselView ItemsSource="{Binding ProductImagesList}"
+                      Margin="0,5"
+                      Grid.ColumnSpan="2"
+                      IndicatorView="IndicatorView">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame HasShadow="True"
+                               BorderColor="DarkGray"
+                               CornerRadius="5"
+                               HorizontalOptions="Center"
+                               Padding="5"
+                               VerticalOptions="Center">
+                            <Image Source="{Binding }"
+                                   Aspect="AspectFill"/>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="IndicatorView"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGreen"
+                       HorizontalOptions="Center"/>
+        
+        <Label Grid.Row="2"
+               Text="{Binding ProductName}"
+               Style="{StaticResource ProductTitleLabelStyle}"/>
+        <Frame Grid.Row="2"
+               Grid.Column="1"
+               CornerRadius="5"
+               HasShadow="True"
+               Margin="0"
+               Padding="0"
+               BackgroundColor="{StaticResource StylishGrayColor}"
+               WidthRequest="100"
+               HorizontalOptions="Center"
+               BorderColor="Gray">
+            <Label  Text="{Binding Price, StringFormat='{0:C2}'}"
+                    
+                    Style="{StaticResource ProductPriceLabelStyle}"/>
+        </Frame>
+
+        <Label Grid.Row="3"
+               Grid.ColumnSpan="2"
+               Style="{StaticResource ProductDescriptionLabelStyle}"
+               Text="Premium dress with embroidery and lace Composition: 100% POLYESTER"/>
+        <Frame Grid.Row="4"
+               Grid.ColumnSpan="2"
+               Style="{StaticResource ButtonFrameStyle}">
+            <Button Style="{StaticResource ButtonStyle}"
+                    Text="Buy"/>
+        </Frame>
+        
+
+    </Grid>
+  
+</ContentPage>
