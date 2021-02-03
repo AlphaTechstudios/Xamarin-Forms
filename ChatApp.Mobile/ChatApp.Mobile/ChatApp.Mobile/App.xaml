@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:converters="clr-namespace:ChatApp.Mobile.Converters"
+             x:Class="ChatApp.Mobile.App">
+  <Application.Resources>
+
+        <Color x:Key="PrimaryColor">#1B1F7B</Color>
+        <Color x:Key="ElegantDarkColor">#2E2E2E</Color>
+        <Color x:Key="WhiteColor">#FFFFFF</Color>
+    <!-- Application resource dictionary -->
+
+        <!--Navigation bar-->
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BarTextColor" Value="{StaticResource WhiteColor}"/>
+        </Style>
+
+        <!--Button Style-->
+        <Style x:Key="ButtonFrameStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="HasShadow" Value="True"/>
+            <Setter Property="CornerRadius" Value="100" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="250" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+
+        <converters:BooleanToVisibility x:Key="BooleanToVisibility"/>
+    </Application.Resources>
+</prism:PrismApplication>

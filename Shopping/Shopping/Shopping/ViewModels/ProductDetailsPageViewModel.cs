@@ -1,20 +1,19 @@
 ﻿using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Shopping.Models.Models;
 using Shopping.Services.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Windows.Input;
 
 namespace Shopping.ViewModels
 {
     public class ProductDetailsPageViewModel : ViewModelBase
     {
         #region Properties
-        private IEnumerable<string> productImagesList;
         private readonly IProductsService productsService;
+
+        private IEnumerable<string> productImagesList;
 
         public IEnumerable<string> ProductImagesList
         {
@@ -35,13 +34,53 @@ namespace Shopping.ViewModels
             get => price;
             set => SetProperty(ref price, value);
         }
+
+        private int quantity;
+        public int Quantity 
+        { 
+            get => quantity;
+            set=> SetProperty(ref quantity, value);
+        }
+
+        private IEnumerable<string> sizeList;
+        public IEnumerable<string> SizeList 
+        { 
+            get => sizeList;
+            set => SetProperty(ref sizeList, value);
+        }
+
+        private string selectedSize;
+        public string SelectedSize
+        {
+            get => selectedSize;
+            set => SetProperty(ref selectedSize, value);
+        }
+
         #endregion
         #region Commands
+
+        public ICommand IncreaseQuantityCommand { get; set; }
+        public ICommand DecreaseQuantityCommand { get; set; }
         #endregion
         public ProductDetailsPageViewModel(INavigationService navigationService, IProductsService productsService)
             : base(navigationService)
         {
             this.productsService = productsService;
+            IncreaseQuantityCommand = new DelegateCommand(IncreaseQuantity);
+            DecreaseQuantityCommand = new DelegateCommand(DecreaseQuantity);
+        }
+
+        private void DecreaseQuantity()
+        {
+            if(Quantity >= 2)
+            {
+                Quantity--;
+            }
+        }
+
+        private void IncreaseQuantity()
+        {
+            Quantity++;
         }
 
         public override void Initialize(INavigationParameters parameters)
@@ -51,6 +90,10 @@ namespace Shopping.ViewModels
             ProductImagesList = productsService.GetProductsImages(productModel.ID);
             ProductName = productModel.Name;
             Price = productModel.Price;
+
+            // Fake data 
+            SizeList = new List<string>() { "S", "M", "L" };
+            Quantity = 1;
 
         }
     }

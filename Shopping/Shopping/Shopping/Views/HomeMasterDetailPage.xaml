@@ -10,6 +10,7 @@
     <MasterDetailPage.Master>
         <NavigationPage Title="Menu"
                         IconImageSource="ic_hamburger.png">
+           
             <x:Arguments>
                 <ContentPage NavigationPage.HasBackButton="False"
                              Title="Menu"
