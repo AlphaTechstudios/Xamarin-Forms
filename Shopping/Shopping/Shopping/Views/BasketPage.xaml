@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Shopping.Views.BasketPage"
+             NavigationPage.HasNavigationBar="False"
+             Title="Basket"
+             x:Name="BasketDetails">
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding ProductsList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                       Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=BasketDetails}}" CommandParameter="{Binding .}"
+                                       IconImageSource="delete.png"
+                                       BackgroundColor="#CC0000"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                            
+                        <Grid ColumnDefinitions="*,*,*"
+                          RowDefinitions="160,1">
+                            <Frame BorderColor="LightGray"
+                               Padding="3"
+                               Margin="5">
+                                <Image Source="{Binding Thumbnail}"
+                               Aspect="AspectFill"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                            </Frame>
+                            <Label Grid.Column="1"
+                               VerticalOptions="Center"
+                               Text="{Binding Name}"
+                               FontSize="15"/>
+                            <Frame Grid.Column="2"
+                               CornerRadius="5"
+                               HasShadow="True"
+                               Margin="0"
+                               Padding="0"
+                               BackgroundColor="{StaticResource StylishGrayColor}"
+                               WidthRequest="60"
+                               HeightRequest="35"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               BorderColor="Gray">
+                                <Label  Text="{Binding Price, StringFormat='{0:C2}'}"
+                                            Style="{StaticResource ProductPriceLabelStyle}"/>
+                            </Frame>
+                            <BoxView Grid.Row="1"
+                                 HeightRequest="2"
+                                 Grid.ColumnSpan="3"
+                                 BackgroundColor="Gray"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Header>
+                <Grid BackgroundColor="Black"
+                          HeightRequest="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Total:"
+                           FontSize="20"
+                           Grid.ColumnSpan="2"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           TextColor="White"></Label>
+                    <Frame Grid.Column="2"
+                               CornerRadius="5"
+                               HasShadow="True"
+                               Margin="0"
+                               Padding="0"
+                               BackgroundColor="White"
+                               WidthRequest="60"
+                               HeightRequest="35"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               BorderColor="White"
+                           >
+                        <Label  Text="{Binding TotalPrice, StringFormat='{0:C2}'}"
+                                TextColor="Black"
+                                            Style="{StaticResource ProductPriceLabelStyle}"/>
+                    </Frame>
+
+                </Grid>
+            </CollectionView.Header>
+            
+        </CollectionView>
+    </Grid>
+    
+    
+</ContentPage>

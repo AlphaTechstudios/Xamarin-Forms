@@ -49,6 +49,7 @@ namespace Shopping.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            base.OnNavigatedTo(parameters);
          
         }
         public override void Initialize(INavigationParameters parameters)

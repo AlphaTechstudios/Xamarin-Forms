@@ -3,8 +3,10 @@ using Prism.Commands;
 using Prism.Navigation;
 using Shopping.Models.Models;
 using Shopping.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Shopping.ViewModels
 {
@@ -13,6 +15,7 @@ namespace Shopping.ViewModels
         #region Properties
         private readonly IProductsService productsService;
 
+        private ProductModel productModel;
         private IEnumerable<string> productImagesList;
 
         public IEnumerable<string> ProductImagesList
@@ -61,6 +64,10 @@ namespace Shopping.ViewModels
 
         public ICommand IncreaseQuantityCommand { get; set; }
         public ICommand DecreaseQuantityCommand { get; set; }
+        public ICommand AddProductToBasketCommand { get; set; }
+
+        
+
         #endregion
         public ProductDetailsPageViewModel(INavigationService navigationService, IProductsService productsService)
             : base(navigationService)
@@ -68,6 +75,12 @@ namespace Shopping.ViewModels
             this.productsService = productsService;
             IncreaseQuantityCommand = new DelegateCommand(IncreaseQuantity);
             DecreaseQuantityCommand = new DelegateCommand(DecreaseQuantity);
+            AddProductToBasketCommand = new DelegateCommand(AddProductToBasket);
+        }
+
+        private void AddProductToBasket()
+        {
+            MessagingCenter.Send("UpdateBasket", "Add product", productModel);
         }
 
         private void DecreaseQuantity()
@@ -85,7 +98,7 @@ namespace Shopping.ViewModels
 
         public override void Initialize(INavigationParameters parameters)
         {
-            ProductModel productModel = JsonConvert.DeserializeObject<ProductModel>(parameters.GetValue<string>("Product"));
+            productModel = JsonConvert.DeserializeObject<ProductModel>(parameters.GetValue<string>("Product"));
             Title = productModel.Name;
             ProductImagesList = productsService.GetProductsImages(productModel.ID);
             ProductName = productModel.Name;

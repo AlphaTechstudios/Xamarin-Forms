@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid  xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:prism="http://prismlibrary.com"
+         x:Class="Shopping.Views.UserControls.BasketHeaderUserControl"
+        ColumnDefinitions="*,60"
+       x:Name="BasketHeader">
+    <Label Text="{Binding Title}"
+                   TextColor="White"
+                   FontSize="20"
+                   VerticalTextAlignment="Center"/>
+    <Frame Grid.Column="1"
+                   Margin="0"
+                   Padding="5"
+                   BorderColor="Green"
+                   HasShadow="True"
+                   CornerRadius="50"
+                   WidthRequest="40"
+                   BackgroundColor="White"
+                   HorizontalOptions="Center">
+        <ImageButton WidthRequest="40"
+                             HeightRequest="40"
+                             Padding="5"
+                             Source="add_to_basket.png"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"/>
+    </Frame>
+    <Frame Grid.Column="1"
+                   WidthRequest="20"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   CornerRadius="50"
+                   BackgroundColor="Red"
+                   Margin="30,-30,0,0"
+                    HasShadow="true"
+                   BorderColor="Black"
+                   Padding="1">
+        <Label Text="{Binding ProductCount}"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+    </Frame>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding GoToBasketCommand}"
+                              NumberOfTapsRequired="1"/>
+    </Grid.GestureRecognizers>
+</Grid>

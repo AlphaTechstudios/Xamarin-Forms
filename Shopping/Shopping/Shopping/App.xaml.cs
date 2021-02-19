@@ -35,6 +35,7 @@ namespace Shopping
 
             containerRegistry.Register<IProductsService, ProductsService>();
             containerRegistry.RegisterForNavigation<ProductDetailsPage, ProductDetailsPageViewModel>();
+            containerRegistry.RegisterForNavigation<BasketPage, BasketPageViewModel>();
         }
     }
 }

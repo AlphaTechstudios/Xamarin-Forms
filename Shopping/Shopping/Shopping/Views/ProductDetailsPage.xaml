@@ -4,7 +4,14 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Shopping.Views.ProductDetailsPage"
-             Title="{Binding Title}">
+             xmlns:UserCtrls="clr-namespace:Shopping.Views.UserControls"
+             x:Name="ProductDetails">
+    <NavigationPage.TitleView>
+        <UserCtrls:BasketHeaderUserControl Title="{Binding Title}"
+                                           ProductCount="{Binding Source={x:Reference ProductDetails}, Path=BindingContext.ProductCount}"
+                                           GoToBasketCommand="{Binding Source={x:Reference ProductDetails}, Path=BindingContext.GoToBasketCommand}"
+                                          />
+    </NavigationPage.TitleView>
     <ScrollView>
     <Grid RowDefinitions="400,30,50,auto,auto,80,80"
           Margin="5"
@@ -96,7 +103,8 @@
                Grid.ColumnSpan="2"
                Style="{StaticResource ButtonFrameStyle}">
             <Button Style="{StaticResource ButtonStyle}"
-                    Text="Buy"/>
+                    Text="Buy"
+                    Command="{Binding AddProductToBasketCommand}"/>
         </Frame>
         
 
