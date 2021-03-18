@@ -6,12 +6,13 @@
     <Grid RowDefinitions="*,*,*">
         <StackLayout Grid.Row="1"
                      Margin="20,0">
-            <Entry Text="{Binding UserName}" Placeholder="Name"></Entry>
+            <Entry Text="{Binding Email}" Placeholder="Email"></Entry>
+            <Entry Text="{Binding Pwd}" Placeholder="Password" IsPassword="True"></Entry>
 
             <Frame Style="{StaticResource ButtonFrameStyle}" >
                 <Button Style="{StaticResource ButtonStyle}"
-                        Text="Join"
-                        Command="{Binding NavigateToChatPageCommand}"/>
+                        Text="Sign In"
+                        Command="{Binding SignInCommand}"/>
             </Frame>
         </StackLayout>
             </Grid>

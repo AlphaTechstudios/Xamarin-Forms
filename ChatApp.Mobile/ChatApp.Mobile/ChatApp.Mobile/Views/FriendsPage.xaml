@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Mobile.Views.FriendsPage"
+             Title="My Friends"
+             x:Name="FriendsPageName">
+    <Grid>
+        <CollectionView ItemsSource="{Binding FriendsList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="80, 80,*" RowDefinitions="80">
+                        <Frame Padding="0"
+                               Margin="5"
+                               HasShadow="True"
+                               BorderColor="Black"
+                               CornerRadius="50"
+                               HorizontalOptions="Center">
+                            <Image Aspect="AspectFill"
+                                   Source="https://i.pinimg.com/236x/b2/7c/b9/b27cb9fc7b499bcd62c6033f1e16624f.jpg"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                        <Label Grid.Column="1"
+                               VerticalOptions="Center"
+                               Text="{Binding Name}" 
+                               HorizontalTextAlignment="Center"
+                               FontSize="20"
+                               TextColor="Black"/>
+                        <BoxView Grid.ColumnSpan="3"
+                                 HeightRequest="1"
+                                 VerticalOptions="End"
+                                 BackgroundColor="LightGray"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference FriendsPageName}, Path=BindingContext.GoToPrivateDiscussionCommand}"
+                                                  NumberOfTapsRequired="1"
+                                                  CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+  
+</ContentPage>

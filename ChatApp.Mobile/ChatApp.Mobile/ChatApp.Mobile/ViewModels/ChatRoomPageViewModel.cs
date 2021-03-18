@@ -38,8 +38,9 @@ namespace ChatApp.Mobile.ViewModels
 
         public ChatRoomPageViewModel(
             INavigationService navigationService,
-            IChatService chatService)
-            : base(navigationService)
+            IChatService chatService,
+            ISessionService sessionService)
+            : base(navigationService, sessionService)
         {
             this.chatService = chatService;
             SendMsgCommand = new DelegateCommand(SendMsg);
@@ -52,7 +53,7 @@ namespace ChatApp.Mobile.ViewModels
             try
             {
                 chatService.ReceiveMessage(GetMessage);
-                await chatService.Connect();
+                await chatService.Connect(UserName);
             }
             catch (System.Exception exp)
             {

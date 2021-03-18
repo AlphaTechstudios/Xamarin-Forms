@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using ChatApp.Mobile.Services.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -12,15 +13,18 @@ namespace ChatApp.Mobile.ViewModels
         protected INavigationService NavigationService { get; private set; }
 
         private string _title;
+        protected readonly ISessionService SessionService;
+
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, ISessionService sessionService)
         {
             NavigationService = navigationService;
+            this.SessionService = sessionService;
         }
 
         public virtual void Initialize(INavigationParameters parameters)

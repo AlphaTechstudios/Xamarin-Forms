@@ -12,27 +12,44 @@ namespace ChatApp.Mobile.Services.Core
         private readonly HubConnection hubConnection;
         public ChatService()
         {
-            hubConnection = new HubConnectionBuilder().WithUrl("http://10.0.2.2:2777/chathub").Build();
+            hubConnection = new HubConnectionBuilder().WithUrl("http://192.168.1.36:45459/chathub").Build();
         }
 
-        public async Task Connect()
+        public async Task Connect(string userEmail)
         {
             await hubConnection.StartAsync();
+            await hubConnection.InvokeAsync("OnConnect", userEmail);
         }
 
-        public async Task Disconnect()
+        public async Task Disconnect(string userEmail)
         {
+            await hubConnection.InvokeAsync("OnDisconnect", userEmail);
             await hubConnection.StopAsync();
+
         }
 
-        public async Task SendMessage(string userId, string message)
+        public async Task SendMessage(string userId, string message, bool isPrivate= false)
         {
-            await hubConnection.InvokeAsync("SendMessage", userId, message);
+            if(isPrivate)
+            {
+                await hubConnection.InvokeAsync("SendPrivateMessage", userId, message);
+            }
+            else
+            {
+                await hubConnection.InvokeAsync("SendMessage", userId, message);
+            }
         }
 
-        public void ReceiveMessage(Action<string, string> GetMessageAndUser)
+        public void ReceiveMessage(Action<string, string> GetMessageAndUser, bool isPrivate = false)
         {
-            hubConnection.On("ReceiveMessage", GetMessageAndUser); 
+            if(isPrivate)
+            {
+                hubConnection.On("ReceivePrivateMessage", GetMessageAndUser);
+            }
+            else
+            {
+                hubConnection.On("ReceiveMessage", GetMessageAndUser);
+            }
         }
     }
 }

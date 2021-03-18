@@ -31,8 +31,15 @@ namespace ChatApp.Mobile
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
-            containerRegistry.Register<IChatService, ChatService>();
             containerRegistry.RegisterForNavigation<ChatRoomPage, ChatRoomPageViewModel>();
+            containerRegistry.RegisterForNavigation<FriendsPage, FriendsPageViewModel>();
+
+            containerRegistry.Register<IChatService, ChatService>();
+            containerRegistry.Register<IAuthenticationService, AuthenticationService>();
+            containerRegistry.Register<ISessionService, SessionService>();
+            containerRegistry.Register<IUsersService, UsersService>();
+
+            containerRegistry.RegisterForNavigation<PrivateChatPage, PrivateChatPageViewModel>();
         }
     }
 }
