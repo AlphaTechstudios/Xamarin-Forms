@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StripePayment.Views.MainPage"
+             xmlns:FastEntry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
+             Title="{Binding Title}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Text="{Binding Amount}"
+               Margin="20"
+               WidthRequest="150"
+               HorizontalOptions="Center"
+               Keyboard="Numeric"
+               Placeholder="Amount to Pay"
+               Grid.ColumnSpan="2">
+            <Entry.Behaviors>
+                <FastEntry:XamarinFastEntryBehaviour Mask="#### #### #### ####" MaxLength="19"/>
+            </Entry.Behaviors>
+        </Entry>
+
+
+        <Label Text="Stripe Payment Gateway"
+               FontAttributes="Bold"
+               Grid.ColumnSpan="2"
+               Grid.Row="1"
+               HorizontalOptions="CenterAndExpand"
+               TextColor="Black"/>
+        <Label Text="Card Number"
+               TextColor="Black"
+               Grid.Row="2"
+               Grid.ColumnSpan="2"/>
+        <Entry Text="{Binding CardNumber}"
+               Keyboard="Numeric"
+               Grid.ColumnSpan="2"
+               Grid.Row="3">
+            <Entry.Behaviors>
+                <FastEntry:XamarinFastEntryBehaviour Mask="#### #### #### ####" MaxLength="19"/>
+            </Entry.Behaviors>
+        </Entry>
+        
+        <Label Text="Expiry"
+               Grid.Row="4"
+               TextColor="Black"
+               Grid.ColumnSpan="2"/>
+        <Entry Grid.Row="5"
+               BackgroundColor="Transparent"
+               Keyboard="Numeric"
+               Placeholder="MM/YY"
+               Text="{Binding Expiry}">
+            <Entry.Behaviors>
+                <FastEntry:XamarinFastEntryBehaviour Mask="##/##" MaxLength="5"/>
+            </Entry.Behaviors>
+            
+        </Entry>
+
+        <Label Text="CVV"
+               Grid.Row="4"
+               TextColor="Black"
+               Grid.Column="1"/>
+        <Entry Grid.Row="5"
+               Grid.Column="1"
+               BackgroundColor="Transparent"
+               Keyboard="Numeric"
+               Text="{Binding Cvv}">
+            <Entry.Behaviors>
+                <FastEntry:XamarinFastEntryBehaviour Mask="###" MaxLength="3"/>
+            </Entry.Behaviors>
+
+        </Entry>
+
+        <Button Text="Pay"
+                HorizontalOptions="FillAndExpand"
+                Background="Black"
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                TextColor="White"
+                HeightRequest="50"
+                Command="{Binding PayCommand}"/>
+    </Grid>
+</ContentPage>
