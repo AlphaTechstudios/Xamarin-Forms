@@ -40,6 +40,8 @@ namespace ChatApp.Mobile
             containerRegistry.Register<IUsersService, UsersService>();
 
             containerRegistry.RegisterForNavigation<PrivateChatPage, PrivateChatPageViewModel>();
+            containerRegistry.RegisterForNavigation<IncomeCallPage, IncomeCallPageViewModel>();
+            containerRegistry.RegisterForNavigation<CallPage, CallPageViewModel>();
         }
     }
 }

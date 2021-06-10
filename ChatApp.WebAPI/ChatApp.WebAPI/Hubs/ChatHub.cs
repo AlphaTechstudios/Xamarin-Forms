@@ -48,6 +48,42 @@ namespace ChatApp.WebAPI.Hubs
             }
         }
 
+        public async Task CallFriendAsync(string userEmail)
+        {
+            var senderUser = usersManager.GetUserByConnectionId(Context.ConnectionId);
+            var friend = usersManager.GetUserByEmail(userEmail);
+            var friendConnections = friend.Connections.Where(x => x.IsConnected && x.IsAvailable);
+            
+            foreach (var connection in friendConnections)
+            {
+                await Clients.Client(connection.ConnectionID).SendAsync("ReceivePrivateVideoCall", senderUser.Email);
+            }          
+        }
+
+        public async Task AcceptVideoCall(string currentUser, string friendUser)
+        {
+            var senderUser = usersManager.GetUserByConnectionId(Context.ConnectionId);
+            var friend = usersManager.GetUserByEmail(friendUser);
+            var friendConnections = friend.Connections.Where(x => x.IsConnected);
+            foreach (var connection in friendConnections)
+            {
+                await Clients.Client(connection.ConnectionID).SendAsync("AcceptVideoCallByFriend", currentUser, friendUser);
+            }
+        }
+
+        public async Task RejectVideoCall(string currentUser, string friendUser)
+        {
+            var senderUser = usersManager.GetUserByConnectionId(Context.ConnectionId);
+            var friend = usersManager.GetUserByEmail(friendUser);
+            var friendConnections = friend.Connections.Where(x => x.IsConnected);
+            foreach (var connection in friendConnections)
+            {
+                await Clients.Client(connection.ConnectionID).SendAsync("RejectVideoCallByFriend", currentUser, friendUser);
+            }
+        }
+
+
+
         public async Task OnConnect(string userEmail)
         {
             var user = usersManager.GetUserByEmail(userEmail);

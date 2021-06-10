@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com" xmlns:views="clr-namespace:ChatApp.Mobile.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Mobile.Views.CallPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="50,*,60,30">
+        <views:GenericWebView x:Name="CallWebView" VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand"                 
+                 Grid.RowSpan="4"/>
+        <RelativeLayout VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#CCC"
+                        Grid.RowSpan="4"
+                        IsVisible="false"/>
+        <Frame Margin="0"
+               Padding="0"
+               IsVisible="false">
+            <Grid ColumnDefinitions="*, 50,50">
+                <Label VerticalOptions="Center"
+                   Text="Someone is calling..."
+                   Padding="0"
+                   Margin="10,0,0,0"/>
+                <Image Grid.Column="1"
+                       HeightRequest="25"
+                       VerticalOptions="Center"
+                       Source="outline_call.png"/>
+                <Image Grid.Column="2"
+                       HeightRequest="25"
+                       VerticalOptions="Center"
+                       Source="end_call.png"/>
+            </Grid>
+        </Frame>
+        <StackLayout Grid.Row="2"
+                     Margin="0,0,10,0"
+                     Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     BackgroundColor="Transparent">
+            <Frame HasShadow="True"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   Padding="1"
+                   BackgroundColor="{Binding IsAudioActive, Converter={StaticResource BooleanToColorConverter}, ConverterParameter=#00FFFFFF|#80CCCCCC}"
+                   BorderColor="LightGray"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center">
+                <ImageButton Source="mic_off.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Clicked="ToggleMicClick"/>
+            </Frame>
+
+            <Frame HasShadow="True"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   Padding="1"
+                   BackgroundColor="#CC0000"
+                   BorderColor="LightGray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <ImageButton Source="end_call.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Clicked="EndCallClick"
+                             Command="{Binding EndCallClick}"/>
+            </Frame>
+
+            <Frame HasShadow="True"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   Padding="1"
+                   BackgroundColor="{Binding IsVideoActive, Converter={StaticResource BooleanToColorConverter}, ConverterParameter=#007E33|#80CCCCCC}"
+                   BorderColor="LightGray"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="Center">
+                <ImageButton Source="video_call.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Clicked="ToggelCameraClick"/>
+            </Frame>
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Mobile.Views.IncomeCallPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="150,auto,auto, auto">
+        <StackLayout Grid.Row="1">
+            <Frame CornerRadius="50"
+                   Padding="2" 
+                   HeightRequest="99"
+                   WidthRequest="99"
+                   BorderColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <Frame CornerRadius="50"
+                       Padding="0" 
+                       HeightRequest="99"
+                       WidthRequest="99"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image Margin="0"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           Aspect="Fill"
+                           Source="https://i.pinimg.com/236x/b2/7c/b9/b27cb9fc7b499bcd62c6033f1e16624f.jpg"/>
+                </Frame>
+
+            </Frame>
+            
+            <Label Text="{Binding FriendName}"
+               TextColor="Black"
+               FontSize="25"
+               FontAttributes="Bold"
+               Margin="0"
+               HorizontalOptions="Center"/>
+
+            <Label Text="Video calling..." 
+                   Margin="0,0,0,0"
+                   TextColor="Gray"
+                   FontAttributes="None"
+                   HorizontalOptions="Center"
+                   FontSize="15"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2"
+                     Orientation="Horizontal"
+                     WidthRequest="200"
+                     Margin="0,50,0,0"
+                     HorizontalOptions="Center">
+            <StackLayout>
+                <Frame HasShadow="True"
+                       CornerRadius="50"
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       Padding="1"
+                       BackgroundColor="#CCC"
+                       BorderColor="LightGray"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center">
+                    <ImageButton Source="reminder.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"/>
+                </Frame>
+                <Label Text="Reminder"
+                       Margin="0,0,0,0"
+                       TextColor="Gray"
+                       FontAttributes="None"
+                       HorizontalOptions="Center"
+                       FontSize="15"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="EndAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Frame HasShadow="True"
+                       CornerRadius="50"
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       Padding="1"
+                       Margin="0,0,5,0"
+                       BackgroundColor="#CCC"
+                       BorderColor="LightGray"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center">
+                    <ImageButton Source="message.png"
+                             Margin="15"
+                             CornerRadius="20"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"/>
+                </Frame>
+                <Label Text="Message"
+                       Margin="0,0,0,0"
+                       TextColor="Gray"
+                       FontAttributes="None"
+                       HorizontalOptions="Center"
+                       FontSize="15"/>
+            </StackLayout>
+        </StackLayout>
+
+
+
+        <StackLayout Grid.Row="3"
+                     Orientation="Horizontal"
+                     WidthRequest="200"
+                     Margin="0,50"
+                     HorizontalOptions="Center">
+            <Frame HasShadow="True"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   Padding="1"
+                   BackgroundColor="#CC0000"
+                   BorderColor="LightGray"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center">
+                <ImageButton Source="end_call.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Command="{Binding RejectCallCommand}"/>
+            </Frame>
+
+            <Frame HasShadow="True"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   Padding="1"
+                   BackgroundColor="#007E33"
+                   BorderColor="LightGray"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="Center">
+                <ImageButton Source="video_call.png"
+                             Margin="10"
+                             CornerRadius="50"
+                             HeightRequest="50"
+                             WidthRequest="50"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Command="{Binding AcceptCallCommand}"/>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

@@ -12,7 +12,7 @@ namespace ChatApp.Mobile.Services.Core
         private readonly HubConnection hubConnection;
         public ChatService()
         {
-            hubConnection = new HubConnectionBuilder().WithUrl("http://192.168.1.36:45459/chathub").Build();
+            hubConnection = new HubConnectionBuilder().WithUrl("http://192.168.1.36:45455/chathub").Build();
         }
 
         public async Task Connect(string userEmail)
@@ -50,6 +50,33 @@ namespace ChatApp.Mobile.Services.Core
             {
                 hubConnection.On("ReceiveMessage", GetMessageAndUser);
             }
+        }
+
+        public async Task CallFriend(string friendEmail)
+        {
+            await hubConnection.InvokeAsync("CallFriendAsync", friendEmail);
+        }
+
+        public void ReceivePrivateVideoCall(Action<string> GetVideoCall)
+        {
+            hubConnection.On("ReceivePrivateVideoCall", GetVideoCall);
+        }
+
+        public async Task RejectVideoCall(string currentUser, string friendUser)
+        {
+            await hubConnection.InvokeAsync("RejectVideoCall", currentUser, friendUser);
+        }
+
+        public async Task AcceptVideoCall(string currentUser, string friendUser)
+        {
+            await hubConnection.InvokeAsync("AcceptVideoCall", currentUser, friendUser);
+        }
+
+        public void AcceptVideoCallByFriend(Action<string, string >VideoCallAcceptedByFriend)
+        {
+            hubConnection.On("AcceptVideoCallByFriend", VideoCallAcceptedByFriend);
+
+            
         }
     }
 }

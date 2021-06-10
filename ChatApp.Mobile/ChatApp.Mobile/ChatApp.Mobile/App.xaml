@@ -38,5 +38,6 @@
 
 
         <converters:BooleanToVisibility x:Key="BooleanToVisibility"/>
+        <converters:BooleanToColorConverter x:Key="BooleanToColorConverter"/>
     </Application.Resources>
 </prism:PrismApplication>
