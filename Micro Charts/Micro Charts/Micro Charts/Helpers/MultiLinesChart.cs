@@ -61,11 +61,11 @@ namespace Micro_Charts.Helpers
                 DrawLine(canvas, tempPoints, itemSize);
                 DrawPoints(canvas, tempPoints);
 
-                if(MultiLineEntires.IndexOf(l) == 0)
-                {
+                //if(MultiLineEntires.IndexOf(l) == 0)
+                //{
                     DrawArea(canvas, tempPoints, itemSize, origin);
                     DrawFooter(canvas, l.Select(x => x.Label).ToArray(), valueLableSizes, tempPoints, itemSize, height, footerHeight);
-                }
+                //}
             }
 
             DrawLegends(canvas, width, height);

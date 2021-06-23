@@ -4,17 +4,31 @@
              xmlns:Charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Micro_Charts.Views.MainPage"
              Title="{Binding Title}">
-    <Grid RowDefinitions="300,300,300"
+    <ScrollView>
+        <Grid RowDefinitions="300,300,300,300"
           Padding="10">
-        <Charts:ChartView Chart="{Binding LineChart}"
+            <Charts:ChartView Chart="{Binding LineChart}"
                           HeightRequest="300"
                           VerticalOptions="Start"
                           HorizontalOptions="Fill"/>
 
-        <Charts:ChartView Grid.Row="1"
+            <Charts:ChartView Grid.Row="1"
                           Chart="{Binding MultiLinesChart}"
                           HeightRequest="300"
                           VerticalOptions="Start"
                           HorizontalOptions="Fill"/>
-    </Grid>
+          
+            <Charts:ChartView Grid.Row="2"
+                          Chart="{Binding MultiBarChart}"
+                          HeightRequest="300"
+                          VerticalOptions="Start"
+                          HorizontalOptions="Fill"/>
+
+            <Charts:ChartView Grid.Row="3"
+                          Chart="{Binding DonutChart}"
+                          HeightRequest="300"
+                          VerticalOptions="Start"
+                          HorizontalOptions="Fill"/>
+        </Grid>
+    </ScrollView>
 </ContentPage>
