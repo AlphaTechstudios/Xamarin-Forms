@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:AdmobMonetize.Views" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             x:Class="AdmobMonetize.Views.MainPage"
+             Title="{Binding Title}">
+    <StackLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+            <views:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111" AdType="SmartBanner" WidthRequest="320" HeightRequest="50" AdWidth="320"  />
+            <views:AdMobView AdUnitId="ca-app-pub-3940256099942544/6300978111" AdType="SmartBanner" WidthRequest="320" HeightRequest="50" AdWidth="320"  />
+        </StackLayout>
+      
+            <controls:MTAdView AdsId="ca-app-pub-3940256099942544/2934735716" WidthRequest="320" HeightRequest="50"></controls:MTAdView>
+        <Button Text="Show Rewarded Video" Command="{Binding ShowRewardedVideoCommand}"/>
+    </StackLayout>
+</ContentPage>
